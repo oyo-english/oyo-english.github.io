@@ -446,14 +446,15 @@ R.role_play = a => {
       const t = a.turns[i]; if (!t) return;
       if (t.stage) log.append(h("p", { class: "note" }, "(" + t.stage + ")"));
       if (t.partner) {
-        const tn = h("div", { class: "turn now" }, h("span", { class: "who" }, NAME(a.partner)), h("p", { class: "bubble", lang: "en" }, t.partner));
+        const sp = t.speaker || a.partner;
+        const tn = h("div", { class: "turn now" }, h("span", { class: "who" }, NAME(sp)), h("p", { class: "bubble", lang: "en" }, t.partner));
         log.append(tn); tn.scrollIntoView({ block: "nearest", behavior: "smooth" });
-        await play(t.partner, a.partner, t.audio); tn.classList.remove("now");
+        await play(t.partner, sp, t.audio); tn.classList.remove("now");
       }
       if (t.learner) {
         const L = t.learner;
         const bar = h("div", { class: "bar" }, h("span"));
-        const cue = h("div", { class: "cue" }, h("span", { class: "who" }, "Vous"), en(L.cue), L.start ? h("p", { class: "note" }, "Début : ", en(L.start, "en")) : null, hintToggle(L.hint), bar);
+        const cue = h("div", { class: "cue" }, h("span", { class: "who" }, "Vous" + (L.tag ? " · " + L.tag : "")), en(L.cue), L.start ? h("p", { class: "note" }, "Début : ", en(L.start, "en")) : null, hintToggle(L.hint), bar);
         log.append(cue); cue.scrollIntoView({ block: "nearest", behavior: "smooth" });
         const fill = bar.firstChild; requestAnimationFrame(() => { fill.style.transition = "width " + L.pause + "s linear"; requestAnimationFrame(() => fill.style.width = "100%"); });
         await new Promise(r => setTimeout(r, L.pause * 1000));
@@ -474,6 +475,17 @@ R.role_play = a => {
   card.append(h("div", { class: "row between" }, h("h3", {}, D.titles.role_play + " — " + a.title), a.min_tier ? tierTag(a.min_tier) : null),
     h("p", {}, a.setup), h("p", { class: "note" }, "Écoutez " + NAME(a.partner) + ". Quand la barre avance, répondez à voix haute. Puis écoutez le modèle."), go);
   return card;
+};
+R.checklist = a => {
+  const out = h("p", { class: "fb" });
+  const key = "check-" + a.id; S.log[key] = S.log[key] || [];
+  const update = () => { const n = S.log[key].length; out.replaceChildren(h("b", { class: n >= a.passAt ? "ok" : "" }, n + " / " + a.items.length + ". "), n >= a.passAt ? a.pass : a.retry); };
+  const list = h("div", { style: "display:flex;flex-direction:column;gap:10px" });
+  a.items.forEach((it, i) => { const id = key + "-" + i; const cb = h("input", { type: "checkbox", id }); cb.checked = S.log[key].includes(i);
+    cb.addEventListener("change", () => { S.log[key] = S.log[key].filter(x => x !== i); if (cb.checked) S.log[key].push(i); save(); update(); });
+    list.append(h("label", { class: "check", for: id }, cb, h("span", {}, it.text, it.tag ? h("span", { class: "note" }, "  " + it.tag) : null))); });
+  update();
+  return h("section", { class: "card" }, h("h3", {}, a.title), a.note ? h("p", { class: "note" }, a.note) : null, list, out);
 };
 R.mission = a => {
   const levels = h("ul", { class: "levels" }, a.levels.map(l => h("li", {}, tierTag(l.tier), en(l.model))));
@@ -522,10 +534,11 @@ function render() {
   nb.classList.add("next"); main.append(nb);
 }
 if (D.hub) { const wm = document.querySelector(".wordmark"); const link = h("a", { href: D.hub, class: "wordmark", style: "color:inherit;text-decoration:none" }, "OYO"); const back = h("a", { href: D.hub, class: "note", style: "color:inherit" }, "← Section 1"); wm.replaceWith(h("span", { class: "row" }, link, back)); }
-document.getElementById("lnum").textContent = String(D.lesson.n).padStart(2, "0");
-document.getElementById("lsec").textContent = "Leçon " + D.lesson.n + " · " + D.lesson.section;
+document.getElementById("lnum").textContent = D.lesson.badge || String(D.lesson.n).padStart(2, "0");
+if (D.lesson.badge) document.getElementById("lnum").style.fontSize = "30px";
+document.getElementById("lsec").textContent = D.lesson.kicker || ("Leçon " + D.lesson.n + " · " + D.lesson.section);
 document.getElementById("ltitle").textContent = D.lesson.title;
-document.getElementById("lsub").textContent = D.lesson.subtitle + " · " + D.lesson.minutes + " min";
+document.getElementById("lsub").textContent = D.lesson.subtitle + " · " + D.lesson.minutes + "\u00a0min";
 document.getElementById("foot").textContent = "OYO · Speak Up at Work · " + D.lesson.formula.join(" → ");
 if (D.clips) document.getElementById("voicenote").textContent = "Voix de synthèse (version de test). Montez le volume ; « Vitesse 0,8× » ralentit les phrases.";
 const sp = document.getElementById("speed"); sp.setAttribute("aria-pressed", S.slow ? "true" : "false");

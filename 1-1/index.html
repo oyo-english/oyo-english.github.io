@@ -218,22 +218,37 @@ const Voice = {
   pitch: { kofi: .85, chidi: .75, awa: 1.15, mariam: 1.2, grace: 1.05 }
 };
 Voice.init();
-let current = null;
-function stopAudio() { try { speechSynthesis.cancel(); } catch (e) {} if (current && current.pause) current.pause(); current = null; }
+let current = null, currentDone = null;
+const player = new Audio();   // one shared player for every model line (more reliable on phones than a new player per line)
+player.preload = "auto";
+function setSession(t) { try { if (navigator.audioSession) navigator.audioSession.type = t; } catch (e) {} }
+function stopAudio() {
+  try { speechSynthesis.cancel(); } catch (e) {}
+  try { player.pause(); } catch (e) {}
+  current = null; const done = currentDone; currentDone = null; if (done) done();   // always release the button that was playing
+}
+function pauseRecordings() { document.querySelectorAll(".rec audio").forEach(x => { try { x.pause(); } catch (e) {} }); }
 function play(text, speaker, id) {
-  stopAudio();
+  stopAudio(); pauseRecordings(); setSession("playback");
   return new Promise(resolve => {
+    let finished = false;
+    const done = () => { if (finished) return; finished = true; if (currentDone === done) currentDone = null; resolve(); };
+    currentDone = done;
     const clipSrc = D.clips && D.clips[speaker + "|" + text];
     if (clipSrc) {
-      const a = new Audio(clipSrc); a.playbackRate = S.slow ? .8 : 1; a.preservesPitch = true; current = a;
-      a.onended = a.onerror = () => resolve(); a.play().catch(() => resolve()); return;
+      current = player;
+      player.onended = player.onerror = player.onpause = done;
+      if (player.src !== clipSrc) player.src = clipSrc; else player.currentTime = 0;
+      player.playbackRate = S.slow ? .8 : 1; player.preservesPitch = true;
+      const p = player.play(); if (p && p.catch) p.catch(done);
+      return;
     }
-    if (!("speechSynthesis" in window)) { resolve(); return; }
+    if (!("speechSynthesis" in window)) { done(); return; }
     const u = new SpeechSynthesisUtterance(String(text).replace(/[—–]$/, "").replace(/\[[^\]]+\]/g, "…"));
     const v = Voice.pick(speaker); if (v) u.voice = v; u.lang = v ? v.lang : "en-GB";
     u.rate = S.slow ? .78 : .95; u.pitch = Voice.pitch[speaker] || 1;
-    const guard = setTimeout(resolve, 2500 + String(text).length * (S.slow ? 110 : 90)); // some phones never fire onend
-    u.onend = u.onerror = () => { clearTimeout(guard); resolve(); }; current = u; speechSynthesis.speak(u);
+    const guard = setTimeout(done, 2500 + String(text).length * (S.slow ? 110 : 90)); // some phones never fire onend
+    u.onend = u.onerror = () => { clearTimeout(guard); done(); }; current = u; speechSynthesis.speak(u);
   });
 }
 function playBtn(getText, speaker, id, label) {
@@ -371,6 +386,7 @@ R.repeat = a => {
     h("p", { class: "note" }, "Vérifiez : " + a.checks.join(" · ")));
   D.expressions.forEach((e, i) => {
     const audio = h("audio", { controls: true, hidden: true });
+    audio.addEventListener("play", () => { if (currentDone) stopAudio(); });
     const fid = "rec-" + i;
     let recNode;
     if (D.hosted && navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder) {
@@ -380,11 +396,11 @@ R.repeat = a => {
       btn.addEventListener("click", async () => {
         if (rec && rec.state === "recording") { rec.stop(); return; }
         try {
-          stopAudio();
+          stopAudio(); pauseRecordings(); setSession("play-and-record");
           const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
           chunks = []; rec = new MediaRecorder(stream);
           rec.ondataavailable = ev => { if (ev.data.size) chunks.push(ev.data); };
-          rec.onstop = () => { stream.getTracks().forEach(t => t.stop()); audio.src = URL.createObjectURL(new Blob(chunks, { type: rec.mimeType || "audio/webm" }));
+          rec.onstop = () => { stream.getTracks().forEach(t => t.stop()); setSession("playback"); audio.src = URL.createObjectURL(new Blob(chunks, { type: rec.mimeType || "audio/webm" }));
             audio.hidden = false; btn.classList.remove("btn--primary"); btn.replaceChildren(ic("mic", "ic--sm"), "Recommencer"); };
           rec.start(); btn.classList.add("btn--primary"); btn.replaceChildren(ic("stop", "ic--sm"), "Arrêter");
         } catch (err) { note.hidden = false; }

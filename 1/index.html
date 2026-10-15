@@ -1,0 +1,213 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#12172a">
+<title>OYO · Speak Up at Work</title>
+<meta name="description" content="OYO · Speak Up at Work : l'anglais professionnel pour les francophones. Entraînement en ligne de la Section 1.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&display=swap">
+<style>
+/* OYO practice web — design system v1, "Practice web (dark)" first, "Book (light)" when the viewer prefers light.
+   Layout: one narrow column (phone first), a sticky stage bar, one stage on screen at a time. */
+:root {
+  --paper:#12172a; --surface:#1a2138; --surface-sunk:#0e1222; --line:#2c3550; --ink:#f3eee6; --ink-muted:#a9b0c3;
+  --brand:#f07447; --on-brand:#12172a; --brand-ink:#ff9a73; --brand-tint:#3a2218;
+  --tier-simple:#5cc9a7; --tier-simple-tint:#133229; --tier-natural:#7db0f0; --tier-natural-tint:#15263f;
+  --tier-polished:#a99bf0; --tier-polished-tint:#241d45;
+  --danger:#ff8a80; --danger-tint:#3d1715; --caution:#f2b45a; --caution-tint:#3a2a10; --success:#5bc4e8; --success-tint:#0f2d3a;
+  --focus-ring:var(--ink);
+  --font-practice:"Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-explain:"Atkinson Hyperlegible", ui-sans-serif, system-ui, sans-serif;
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-6:24px; --space-8:32px;
+  --radius-sm:6px; --radius-md:12px; --radius-pill:999px;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) {
+  --paper:#fbf8f3; --surface:#ffffff; --surface-sunk:#f3eee6; --line:#e4dccf; --ink:#17203a; --ink-muted:#545b70;
+  --brand:#e85e33; --on-brand:#17203a; --brand-ink:#b23f1a; --brand-tint:#fce7de;
+  --tier-simple:#17795f; --tier-simple-tint:#e1f2ec; --tier-natural:#1f5fad; --tier-natural-tint:#e4edf9;
+  --tier-polished:#5b45b0; --tier-polished-tint:#ece8f8;
+  --danger:#b42318; --danger-tint:#fce8e6; --caution:#8f5300; --caution-tint:#fbf0da; --success:#0b6e99; --success-tint:#e2f1f8;
+  color-scheme: light; } }
+:root[data-theme="light"] {
+  --paper:#fbf8f3; --surface:#ffffff; --surface-sunk:#f3eee6; --line:#e4dccf; --ink:#17203a; --ink-muted:#545b70;
+  --brand:#e85e33; --on-brand:#17203a; --brand-ink:#b23f1a; --brand-tint:#fce7de;
+  --tier-simple:#17795f; --tier-simple-tint:#e1f2ec; --tier-natural:#1f5fad; --tier-natural-tint:#e4edf9;
+  --tier-polished:#5b45b0; --tier-polished-tint:#ece8f8;
+  --danger:#b42318; --danger-tint:#fce8e6; --caution:#8f5300; --caution-tint:#fbf0da; --success:#0b6e99; --success-tint:#e2f1f8;
+  color-scheme: light; }
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-explain); font-size: 16px; line-height: 24px; -webkit-text-size-adjust: 100%; }
+p, h1, h2, h3, ul, ol { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+[lang="en"] { font-family: var(--font-practice); }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+.wrap { max-width: 560px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.muted { color: var(--ink-muted); }
+.note { font-size: 14px; line-height: 20px; color: var(--ink-muted); }
+.label { font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-muted); }
+.ic { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ic--sm { width: 16px; height: 16px; }
+
+/* header */
+.top { padding-block: var(--space-6) var(--space-4); display: flex; flex-direction: column; gap: var(--space-2); }
+.brandrow { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); }
+.wordmark { font-family: var(--font-practice); font-weight: 800; font-size: 20px; letter-spacing: -.02em; }
+.lessonline { display: flex; align-items: flex-end; gap: var(--space-3); }
+.lnum { font-family: var(--font-practice); font-weight: 800; font-size: 48px; line-height: .85; letter-spacing: -.03em; color: var(--brand-ink); }
+.ltitle { font-family: var(--font-practice); font-weight: 800; font-size: 26px; line-height: 30px; letter-spacing: -.01em; text-wrap: balance; }
+.speed { display: inline-flex; align-items: center; gap: 6px; border: 1.5px solid var(--ink-muted); border-radius: var(--radius-pill); padding: 4px 12px; background: transparent; cursor: pointer; font-size: 14px; min-height: 36px; }
+.speed[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.voicenote { font-size: 13px; line-height: 18px; color: var(--ink-muted); background: var(--surface-sunk); border-radius: var(--radius-sm); padding: 6px 10px; }
+
+/* stage bar */
+.stagebar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 1px solid var(--line); }
+.stages { display: flex; gap: var(--space-2); overflow-x: auto; padding-block: var(--space-3); scrollbar-width: none; }
+.stages::-webkit-scrollbar { display: none; }
+.chip { flex: none; display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 6px 14px 6px 6px; border-radius: var(--radius-pill); border: 1.5px solid var(--line); background: var(--surface); cursor: pointer; font-size: 15px; font-weight: 700; white-space: nowrap; }
+.chip .num { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--surface-sunk); font-size: 13px; }
+.chip[aria-current="step"] { border-color: var(--ink); }
+.chip[aria-current="step"] .num { background: var(--ink); color: var(--paper); }
+.chip.done .num { background: var(--success); color: var(--paper); }
+
+/* stage */
+main { padding-block: var(--space-4) var(--space-8); display: flex; flex-direction: column; gap: var(--space-6); }
+.stage-h { display: flex; flex-direction: column; gap: 4px; }
+.stage-h h2 { font-size: 22px; line-height: 28px; font-weight: 700; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md); padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-3); }
+.card h3 { font-size: 18px; line-height: 24px; font-weight: 700; }
+.row { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+.between { justify-content: space-between; }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 8px 18px; border-radius: var(--radius-pill); border: 1.5px solid var(--ink-muted); background: transparent; cursor: pointer; font-weight: 700; font-size: 16px; }
+.btn--primary { background: var(--brand); color: var(--on-brand); border-color: var(--brand); }
+.btn--ink { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.btn--ghost { border-color: transparent; padding-inline: 8px; color: var(--ink-muted); font-weight: 400; text-decoration: underline; text-underline-offset: 3px; min-height: 36px; }
+.btn[disabled] { opacity: .45; cursor: default; }
+.play { width: 48px; height: 48px; padding: 0; border-radius: 50%; flex: none; }
+.play.playing { box-shadow: 0 0 0 4px var(--brand-tint); }
+.next { align-self: stretch; }
+
+/* tags */
+.tier { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px 2px 6px; border-radius: var(--radius-sm); font-size: 11px; line-height: 14px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.tier::before { content: ""; width: 8px; height: 8px; background: currentColor; flex: none; }
+.tier--simple { color: var(--tier-simple); background: var(--tier-simple-tint); } .tier--simple::before { border-radius: 50%; }
+.tier--natural { color: var(--tier-natural); background: var(--tier-natural-tint); }
+.tier--polished { color: var(--tier-polished); background: var(--tier-polished-tint); } .tier--polished::before { width: 7px; height: 7px; transform: rotate(45deg); }
+
+/* english lines */
+.en { font-family: var(--font-practice); font-size: 17px; line-height: 25px; }
+.expr { font-family: var(--font-practice); font-size: 20px; line-height: 26px; font-weight: 700; }
+.bubble { font-family: var(--font-practice); font-size: 17px; line-height: 25px; padding: 10px 16px; border-radius: 20px; background: var(--surface-sunk); }
+.bubble--you { background: var(--brand-tint); }
+.who { font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-muted); }
+.slot { font-family: var(--font-explain); color: var(--ink-muted); font-size: .88em; }
+
+/* choices */
+.opts { display: flex; flex-direction: column; gap: var(--space-2); }
+.opt { width: 100%; display: grid; grid-template-columns: 30px 1fr 22px; gap: var(--space-3); align-items: start; text-align: left; padding: 12px; border-radius: var(--radius-md); border: 1.5px solid var(--ink-muted); background: var(--surface); cursor: pointer; }
+.opt .k { width: 30px; height: 30px; display: grid; place-items: center; border-radius: var(--radius-sm); background: var(--surface-sunk); font-weight: 700; font-size: 14px; }
+.opt .t { padding-top: 3px; min-width: 0; }
+.opt .m { padding-top: 5px; }
+.opt.right { border-color: var(--success); background: var(--success-tint); }
+.opt.right .k { background: var(--success); color: var(--paper); }
+.opt.right .m { color: var(--success); }
+.opt.wrong { border-color: var(--danger); }
+.opt.wrong .m { color: var(--danger); }
+.opts.locked .opt { cursor: default; }
+.fb { font-size: 16px; line-height: 23px; }
+.fb b.ok { color: var(--success); } .fb b.no { color: var(--danger); }
+.score { font-weight: 700; }
+
+/* dialogue */
+.dlg { display: flex; flex-direction: column; gap: 10px; }
+.turn { display: flex; flex-direction: column; gap: 3px; max-width: 88%; }
+.turn--you { align-self: flex-end; align-items: flex-end; }
+.turn.now .bubble { outline: 2px solid var(--brand); }
+
+/* timer */
+.bar { height: 8px; border-radius: var(--radius-pill); background: var(--surface-sunk); overflow: hidden; }
+.bar > span { display: block; height: 100%; width: 0; background: var(--ink); border-radius: inherit; }
+.cue { border: 1.5px solid var(--ink); border-radius: var(--radius-md); padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
+.cue .en { font-weight: 700; }
+
+/* mission */
+.mission { padding: 0; overflow: hidden; gap: 0; }
+.band { background: var(--brand); color: var(--on-brand); padding: 12px 16px; display: flex; align-items: center; gap: 8px; }
+.band h3 { color: var(--on-brand); }
+.mbody { padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-3); }
+.levels { display: flex; flex-direction: column; gap: 10px; }
+.levels li { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
+textarea { width: 100%; min-height: 64px; resize: vertical; font: inherit; color: var(--ink); background: var(--surface-sunk); border: 1.5px solid var(--ink-muted); border-radius: var(--radius-sm); padding: 8px 10px; }
+.check { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; }
+.check input { width: 22px; height: 22px; margin: 1px 0 0; accent-color: var(--success); flex: none; }
+.rec { display: flex; flex-direction: column; gap: 6px; }
+.rec input[type=file] { position: absolute; width: 1px; height: 1px; opacity: 0; }
+audio { width: 100%; height: 40px; }
+.end { text-align: center; padding: var(--space-6) var(--space-4); display: flex; flex-direction: column; gap: var(--space-3); align-items: center; }
+.end .closing { font-family: var(--font-explain); font-size: 20px; line-height: 28px; font-weight: 700; text-wrap: balance; }
+.foot { padding-block: var(--space-6); border-top: 1px solid var(--line); }
+@media (prefers-reduced-motion: reduce) { .bar > span { transition: none !important; } }
+</style>
+<style>
+body{margin:0} [hidden]{display:none!important}
+.lessons{display:flex;flex-direction:column;gap:12px}
+.lesson{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;padding:16px;border-radius:var(--radius-md);background:var(--surface);border:1px solid var(--line);color:inherit;text-decoration:none}
+.lesson:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+.lesson .lnum{font-size:40px;width:54px}
+.ltext{display:flex;flex-direction:column;gap:4px;min-width:0}
+.lesson .ltitle{font-size:21px;line-height:26px}
+.prog{font-size:13px;font-weight:700;color:var(--ink-muted)} .prog.done{color:var(--success)}
+.hero{display:flex;flex-direction:column;gap:10px;padding-block:28px 8px}
+.hero h1{font-family:var(--font-practice);font-weight:800;font-size:34px;line-height:38px;letter-spacing:-.02em;text-wrap:balance}
+.how{display:flex;flex-direction:column;gap:8px}
+.how li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start}
+.how .n{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--surface-sunk);font-weight:700;font-size:14px}
+</style></head><body>
+<div class="wrap">
+  <header class="hero">
+    <span class="wordmark">OYO</span>
+    <p class="label">Speak Up at Work · Section 1</p>
+    <h1 lang="en">Join the Conversation</h1>
+    <p class="muted">Entrer dans la conversation · l'anglais des réunions, pour les francophones.</p>
+  </header>
+  <main>
+    <section class="card how"><h3>Comment ça marche</h3><ol class="how">
+      <li><span class="n">1</span><span>Lisez la leçon dans votre livre (15&nbsp;min).</span></li>
+      <li><span class="n">2</span><span>Entraînez-vous ici : écoutez, répétez, répondez à voix haute (10&nbsp;min).</span></li>
+      <li><span class="n">3</span><span>Faites la mission dans une vraie réunion cette semaine.</span></li></ol></section>
+    <section class="lessons" aria-label="Leçons"><a class="lesson" href="../1-1/" data-key="oyo-SUA-S01-L01" data-stages="6">
+  <span class="lnum">01</span>
+  <span class="ltext"><span class="ltitle" lang="en">Starting a Conversation</span><span class="muted">Le small talk, dans les deux minutes avant la réunion</span>
+  <span class="note">La visio n&#x27;a pas commencé. Quelqu&#x27;un est déjà là.</span><span class="prog" aria-live="polite"></span></span></a><a class="lesson" href="../1-2/" data-key="oyo-SUA-S01-L02" data-stages="6">
+  <span class="lnum">02</span>
+  <span class="ltext"><span class="ltitle" lang="en">Introducing Yourself</span><span class="muted">Dire qui vous êtes en 10 ou 30 secondes</span>
+  <span class="note">« Let&#x27;s do a quick round of introductions. » C&#x27;est à vous.</span><span class="prog" aria-live="polite"></span></span></a><a class="lesson" href="../1-3/" data-key="oyo-SUA-S01-L03" data-stages="6">
+  <span class="lnum">03</span>
+  <span class="ltext"><span class="ltitle" lang="en">Joining a Discussion</span><span class="muted">Placer votre idée quand il y a une pause</span>
+  <span class="note">Il y a une pause. C&#x27;est votre moment.</span><span class="prog" aria-live="polite"></span></span></a><a class="lesson" href="../1-4/" data-key="oyo-SUA-S01-L04" data-stages="6">
+  <span class="lnum">04</span>
+  <span class="ltext"><span class="ltitle" lang="en">Interrupting Politely</span><span class="muted">Prendre la parole quand quelqu&#x27;un parle encore</span>
+  <span class="note">Quelqu&#x27;un parle encore. Vous devez dire quelque chose maintenant.</span><span class="prog" aria-live="polite"></span></span></a><a class="lesson" href="../1-5/" data-key="oyo-SUA-S01-L05" data-stages="6">
+  <span class="lnum">05</span>
+  <span class="ltext"><span class="ltitle" lang="en">Asking for Clarification</span><span class="muted">Poser la bonne question au lieu de faire semblant</span>
+  <span class="note">Vous comprenez presque tout. Presque.</span><span class="prog" aria-live="polite"></span></span></a><a class="lesson" href="../1-defi/" data-key="oyo-SUA-S01-CH" data-stages="2">
+  <span class="lnum" style="font-size:22px;line-height:40px">Défi</span>
+  <span class="ltext"><span class="ltitle" lang="en">The Monday Meeting</span><span class="muted">Le défi de la section : la réunion du lundi</span>
+  <span class="note">Lundi, 9 h 58. La visio hebdomadaire. Une nouvelle collègue arrive aujourd&#x27;hui.</span><span class="prog" aria-live="polite"></span></span></a></section>
+    <p class="note">Votre progression et vos notes restent sur ce téléphone. Aucun compte, rien n'est envoyé.</p>
+  </main>
+  <footer class="foot note">OYO · Speak Up at Work</footer>
+</div>
+<script>
+document.querySelectorAll(".lesson").forEach(a => {
+  let s = null; try { s = JSON.parse(localStorage.getItem(a.dataset.key) || "null"); } catch (e) {}
+  const n = s && s.done ? s.done.length : 0, total = +a.dataset.stages, p = a.querySelector(".prog");
+  if (n >= total) { p.textContent = "✓ Terminé" + (s.missionDone ? " · mission faite" : ""); p.classList.add("done"); }
+  else if (n > 0) p.textContent = n + " étape" + (n > 1 ? "s" : "") + " sur " + total;
+  else p.textContent = "À commencer";
+});
+</script></body></html>

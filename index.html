@@ -1,7 +1,9 @@
 <!doctype html><html lang="fr"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#12172a">
-<title>OYO · Speak Up at Work</title>
-<meta name="description" content="OYO · Speak Up at Work : l'anglais professionnel pour les francophones. Entraînement en ligne de la Section 1.">
+<title>OYO · Speak Up at Work — l'anglais des réunions pour francophones</title>
+<meta name="description" content="Prenez la parole en réunion, en anglais. Section 1 : 5 situations, 40 expressions, entraînement audio sur votre téléphone. 2 000 FCFA.">
+<meta property="og:title" content="OYO · Speak Up at Work"><meta property="og:description" content="L'anglais des réunions, pour les professionnels francophones. Section 1 : 2 000 FCFA.">
+<meta property="og:image" content="img/livre-l04.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&display=swap">
@@ -153,61 +155,68 @@ audio { width: 100%; height: 40px; }
 @media (prefers-reduced-motion: reduce) { .bar > span { transition: none !important; } }
 </style>
 <style>
-body{margin:0} [hidden]{display:none!important}
-.lessons{display:flex;flex-direction:column;gap:12px}
-.lesson{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;padding:16px;border-radius:var(--radius-md);background:var(--surface);border:1px solid var(--line);color:inherit;text-decoration:none}
-.lesson:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
-.lesson .lnum{font-size:40px;width:54px}
-.ltext{display:flex;flex-direction:column;gap:4px;min-width:0}
-.lesson .ltitle{font-size:21px;line-height:26px}
-.prog{font-size:13px;font-weight:700;color:var(--ink-muted)} .prog.done{color:var(--success)}
-.hero{display:flex;flex-direction:column;gap:10px;padding-block:28px 8px}
-.hero h1{font-family:var(--font-practice);font-weight:800;font-size:34px;line-height:38px;letter-spacing:-.02em;text-wrap:balance}
-.how{display:flex;flex-direction:column;gap:8px}
-.how li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start}
-.how .n{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--surface-sunk);font-weight:700;font-size:14px}
+body{margin:0} [hidden]{display:none!important} a{color:inherit}
+.hero{padding-block:32px 8px;display:flex;flex-direction:column;gap:14px}
+.hero h1{font-family:var(--font-explain);font-weight:700;font-size:34px;line-height:40px;letter-spacing:-.01em;text-wrap:balance}
+.hero h1 em{font-style:normal;font-family:var(--font-practice);color:var(--brand-ink)}
+.hero p.sub{font-size:18px;line-height:27px;color:var(--ink-muted)}
+.ctas{display:flex;flex-wrap:wrap;gap:10px}
+.btn{text-decoration:none}
+main{gap:28px}
+h2{font-size:24px;line-height:30px;font-weight:700;text-wrap:balance}
+.ba{display:flex;flex-direction:column;gap:0} .ba li{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:22px}
+.ba li span:last-child{font-weight:700}
+.ls{display:flex;flex-direction:column;gap:10px} .ls li{display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:start;padding:14px;border-radius:var(--radius-md);background:var(--surface);border:1px solid var(--line)}
+.ls .lnum{font-size:34px} .lt{display:flex;flex-direction:column;gap:3px;min-width:0} .lt b{font-family:var(--font-practice);font-size:19px;line-height:24px}
+.say{font-family:var(--font-practice);font-weight:700;color:var(--brand-ink)}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:12px} .shots img{width:100%;height:auto;border-radius:var(--radius-md);border:1px solid var(--line);display:block}
+.shots figcaption{font-size:13px;color:var(--ink-muted);margin-top:6px}
+.steps{counter-reset:s;display:flex;flex-direction:column;gap:12px} .steps li{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}
+.steps li::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--surface-sunk);font-weight:700}
+.offer{border:2px solid var(--brand);} .price{font-family:var(--font-practice);font-weight:800;font-size:40px;line-height:44px}
+.offer ul{display:flex;flex-direction:column;gap:6px} .offer li::before{content:"✓  ";color:var(--success);font-weight:700}
+.free{background:var(--brand-tint);border-color:transparent}
+details{border-bottom:1px solid var(--line);padding:12px 0} summary{cursor:pointer;font-weight:700} details p{margin-top:8px;color:var(--ink-muted)}
+.sticky{position:sticky;bottom:0;padding-block:10px calc(10px + env(safe-area-inset-bottom,0px));background:var(--paper);border-top:1px solid var(--line)}
+.sticky .btn{width:100%}
 </style></head><body>
 <div class="wrap">
-  <header class="hero">
-    <span class="wordmark">OYO</span>
-    <p class="label">Speak Up at Work · Section 1</p>
-    <h1 lang="en">Join the Conversation</h1>
-    <p class="muted">Entrer dans la conversation · l'anglais des réunions, pour les francophones.</p>
-  </header>
-  <main>
-    <section class="card how"><h3>Comment ça marche</h3><ol class="how">
-      <li><span class="n">1</span><span>Lisez la leçon dans votre livre (15&nbsp;min).</span></li>
-      <li><span class="n">2</span><span>Entraînez-vous ici : écoutez, répétez, répondez à voix haute (10&nbsp;min).</span></li>
-      <li><span class="n">3</span><span>Faites la mission dans une vraie réunion cette semaine.</span></li></ol></section>
-    <section class="lessons" aria-label="Leçons"><a class="lesson" href="1-1/" data-key="oyo-SUA-S01-L01" data-stages="6">
-  <span class="lnum">01</span>
-  <span class="ltext"><span class="ltitle" lang="en">Starting a Conversation</span><span class="muted">Le small talk, dans les deux minutes avant la réunion</span>
-  <span class="note">La visio n&#x27;a pas commencé. Quelqu&#x27;un est déjà là.</span><span class="prog" aria-live="polite"></span></span></a><a class="lesson" href="1-2/" data-key="oyo-SUA-S01-L02" data-stages="6">
-  <span class="lnum">02</span>
-  <span class="ltext"><span class="ltitle" lang="en">Introducing Yourself</span><span class="muted">Dire qui vous êtes en 10 ou 30 secondes</span>
-  <span class="note">« Let&#x27;s do a quick round of introductions. » C&#x27;est à vous.</span><span class="prog" aria-live="polite"></span></span></a><a class="lesson" href="1-3/" data-key="oyo-SUA-S01-L03" data-stages="6">
-  <span class="lnum">03</span>
-  <span class="ltext"><span class="ltitle" lang="en">Joining a Discussion</span><span class="muted">Placer votre idée quand il y a une pause</span>
-  <span class="note">Il y a une pause. C&#x27;est votre moment.</span><span class="prog" aria-live="polite"></span></span></a><a class="lesson" href="1-4/" data-key="oyo-SUA-S01-L04" data-stages="6">
-  <span class="lnum">04</span>
-  <span class="ltext"><span class="ltitle" lang="en">Interrupting Politely</span><span class="muted">Prendre la parole quand quelqu&#x27;un parle encore</span>
-  <span class="note">Quelqu&#x27;un parle encore. Vous devez dire quelque chose maintenant.</span><span class="prog" aria-live="polite"></span></span></a><a class="lesson" href="1-5/" data-key="oyo-SUA-S01-L05" data-stages="6">
-  <span class="lnum">05</span>
-  <span class="ltext"><span class="ltitle" lang="en">Asking for Clarification</span><span class="muted">Poser la bonne question au lieu de faire semblant</span>
-  <span class="note">Vous comprenez presque tout. Presque.</span><span class="prog" aria-live="polite"></span></span></a><a class="lesson" href="1-defi/" data-key="oyo-SUA-S01-CH" data-stages="2">
-  <span class="lnum" style="font-size:22px;line-height:40px">Défi</span>
-  <span class="ltext"><span class="ltitle" lang="en">The Monday Meeting</span><span class="muted">Le défi de la section : la réunion du lundi</span>
-  <span class="note">Lundi, 9 h 58. La visio hebdomadaire. Une nouvelle collègue arrive aujourd&#x27;hui.</span><span class="prog" aria-live="polite"></span></span></a></section>
-    <p class="note">Votre progression et vos notes restent sur ce téléphone. Aucun compte, rien n'est envoyé.</p>
-  </main>
-  <footer class="foot note">OYO · Speak Up at Work</footer>
+<header class="hero">
+  <span class="wordmark">OYO</span>
+  <p class="label">Speak Up at Work · l'anglais des réunions, pour les francophones</p>
+  <h1>Prenez la parole en réunion, <em lang="en">in English.</em></h1>
+  <p class="sub">Vous comprenez l&#x27;anglais. Mais quand la réunion commence, vous attendez. La pause passe, quelqu&#x27;un parle, et votre idée reste dans votre tête.</p>
+  <div class="ctas"><span class="btn btn--primary" aria-disabled="true" style="opacity:.5">Commandes bientôt ouvertes</span><a class="btn" href="#gratuit">Essayer gratuitement</a></div>
+</header>
+<main>
+  <section class="card"><h2>Ne mémorisez pas l&#x27;anglais. Mémorisez des situations.</h2>
+    <ul class="ba"><li><span class="label">Avant</span><span class="label">Après la Section 1</span></li><li><span class="muted">Je ne dis rien avant la réunion.</span><span>Je lance une courte discussion avant la visio.</span></li><li><span class="muted">Je ne sais pas dire mon poste en anglais.</span><span>Je me présente en 10 ou 30 secondes.</span></li><li><span class="muted">J&#x27;attends le moment parfait, et il ne vient jamais.</span><span>Je prends mon tour pendant une pause.</span></li><li><span class="muted">Je laisse passer une erreur parce que quelqu&#x27;un parle.</span><span>J&#x27;interromps poliment quand c&#x27;est important.</span></li><li><span class="muted">Je dis « okay » quand je ne comprends pas.</span><span>Je pose la bonne question au lieu de faire semblant.</span></li></ul></section>
+  <section><h2>5 situations de réunion, 5 réflexes</h2><p class="muted" style="margin:6px 0 12px">Chaque leçon part d'un vrai moment et vous donne les mots pour le gérer.</p><ul class="ls"><li><span class="lnum">01</span><span class="lt"><b lang="en">Starting a Conversation</b><span class="muted">La visio n&#x27;a pas commencé. Quelqu&#x27;un est déjà là.</span><span class="say" lang="en">« How&#x27;s it going? »</span></span></li><li><span class="lnum">02</span><span class="lt"><b lang="en">Introducing Yourself</b><span class="muted">« Let&#x27;s do a quick round of introductions. » C&#x27;est à vous.</span><span class="say" lang="en">« I&#x27;m Awa, from the operations team in Abidjan. »</span></span></li><li><span class="lnum">03</span><span class="lt"><b lang="en">Joining a Discussion</b><span class="muted">Il y a une pause. C&#x27;est votre moment.</span><span class="say" lang="en">« Can I add something? »</span></span></li><li><span class="lnum">04</span><span class="lt"><b lang="en">Interrupting Politely</b><span class="muted">Quelqu&#x27;un parle encore. Vous devez dire quelque chose maintenant.</span><span class="say" lang="en">« Sorry to interrupt, but… »</span></span></li><li><span class="lnum">05</span><span class="lt"><b lang="en">Asking for Clarification</b><span class="muted">Vous comprenez presque tout. Presque.</span><span class="say" lang="en">« What do you mean by…? »</span></span></li></ul></section>
+  <section><h2>Un livre et un entraînement audio</h2>
+    <div class="shots" style="margin-top:12px"><figure style="margin:0"><img src="img/livre-l04.jpg" alt="Page d'ouverture de la leçon 4" loading="lazy" width="620" height="880"><figcaption>Le livre : explications en français, anglais à pratiquer.</figcaption></figure>
+    <figure style="margin:0"><img src="img/livre-pieges.jpg" alt="Page des pièges francophones" loading="lazy" width="620" height="880"><figcaption>Les pièges francophones, et quoi dire à la place.</figcaption></figure></div></section>
+  <section class="card"><h2>Comment ça marche</h2><ol class="steps">
+    <li><span><b>Lisez la leçon</b> — 15 minutes, dans votre livre PDF.</span></li>
+    <li><span><b>Entraînez-vous sur votre téléphone</b> — écoutez Awa, Kofi et Chidi, répétez, et répondez-leur à voix haute. 10 minutes.</span></li>
+    <li><span><b>Faites la mission</b> — utilisez le réflexe une fois dans une vraie réunion cette semaine.</span></li></ol></section>
+  <div id="gratuit"><section class="card free"><p class="label">Gratuit</p><h2>Essayez la leçon 1</h2>
+<p>Le small talk des deux minutes avant la réunion : le livret complet et l'entraînement audio avec Kofi et Chidi. Sans inscription.</p>
+<div class="row"><a class="btn btn--ink" href="gratuit/OYO_Lecon01_Starting_a_Conversation.pdf" download>Télécharger la leçon 1 (PDF)</a>
+<a class="btn" href="1-1/">S'entraîner en ligne</a></div></section></div>
+  <section class="card offer" id="commander"><p class="label">OYO Pill 01 · Section 1 : Join the Conversation</p>
+    <p class="price">2 000 FCFA</p>
+    <ul><li>Le livre PDF de 62 pages : 5 leçons, 40 expressions, le défi final</li><li>6 pages d'entraînement audio sur votre téléphone</li>
+    <li>5 missions pour la vraie vie, et votre progression avant/après</li><li>Sans compte, sans application, à vous pour toujours</li></ul>
+    <span class="btn btn--primary" aria-disabled="true" style="opacity:.5">Commandes bientôt ouvertes</span>
+    <p class="note">Paiement par Orange Money · MTN MoMo · Moov Money · Wave. Vous recevez votre livre sur WhatsApp dès la confirmation.</p></section>
+  <section class="card"><h2>Pour commander</h2><ol class="steps">
+    <li><span>Écrivez-nous sur WhatsApp avec le bouton « Commander ».</span></li>
+    <li><span>Payez 2 000 FCFA par Mobile Money (Orange Money · MTN MoMo · Moov Money · Wave).</span></li>
+    <li><span>Recevez votre livre et vos liens d'entraînement, en quelques minutes.</span></li></ol></section>
+  <section><h2>Questions fréquentes</h2><details><summary>Quel niveau faut-il ?</summary><p>Vous comprenez l&#x27;anglais écrit et un peu l&#x27;oral (A2 à B2). Chaque leçon commence par 3 expressions simples qui suffisent ; les autres sont des bonus.</p></details><details><summary>Faut-il créer un compte ?</summary><p>Non. Vous recevez un livre PDF, et l&#x27;entraînement s&#x27;ouvre sur votre téléphone, sans compte et sans application.</p></details><details><summary>Combien de temps par leçon ?</summary><p>Environ 15 minutes de lecture et 10 minutes d&#x27;entraînement. L&#x27;idéal : une leçon par semaine, avec une mission dans une vraie réunion.</p></details><details><summary>Comment je reçois le livre ?</summary><p>Sur WhatsApp, dès que votre paiement Mobile Money est confirmé.</p></details><details><summary>Les explications sont en anglais ?</summary><p>Non : tout est expliqué en français. Vous ne pratiquez en anglais que ce que vous direz vraiment en réunion.</p></details></section>
+  <p class="note">Déjà client ? <a href="1/">Ouvrez votre entraînement de la Section 1</a>.</p>
+</main>
+<footer class="foot note">OYO · Speak Up at Work · Abidjan</footer>
 </div>
-<script>
-document.querySelectorAll(".lesson").forEach(a => {
-  let s = null; try { s = JSON.parse(localStorage.getItem(a.dataset.key) || "null"); } catch (e) {}
-  const n = s && s.done ? s.done.length : 0, total = +a.dataset.stages, p = a.querySelector(".prog");
-  if (n >= total) { p.textContent = "✓ Terminé" + (s.missionDone ? " · mission faite" : ""); p.classList.add("done"); }
-  else if (n > 0) p.textContent = n + " étape" + (n > 1 ? "s" : "") + " sur " + total;
-  else p.textContent = "À commencer";
-});
-</script></body></html>
+
+</body></html>
